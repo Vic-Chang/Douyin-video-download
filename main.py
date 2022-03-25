@@ -1,8 +1,8 @@
 import json
 import re
 import requests
-from fastapi import FastAPI
-from urllib.parse import urlparse
+from fastapi import FastAPI, Body
+from urllib.parse import urlparse, unquote
 
 app = FastAPI()
 
@@ -13,12 +13,13 @@ async def root():
 
 
 @app.post("/")
-async def get_video_url(p_str: str):
+async def get_video_url(p_str: str = Body(...)):
     req = requests.Session()
     headers = {
-        'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+        'user-agent': 'Mozilla/5.0  (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
     }
     regular_patten = r'(?:https:)//.*(?=/)'
+    p_str = unquote(p_str)
     input_url = re.search(regular_patten, p_str).group()
     response = req.get(input_url, headers=headers)
 

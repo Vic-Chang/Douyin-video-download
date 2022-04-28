@@ -27,3 +27,7 @@ If you use iOS system, you can use App `Shortcuts` to quickly to download videos
 This project contain a example shortcut file `DouYin Download Shortcut.shortcut`, If you want to use shortcuts, import this file to your system.
 
 And edit this shortcut's service URL to your own service.
+
+## Demo
+
+![Demo](https://user-images.githubusercontent.com/16682813/165685821-f180476e-e895-451c-8b89-473e104f890b.gif)
